@@ -58,10 +58,12 @@ class Home extends CI_Controller
      */
     public function index()
     {
-        $data=array(
-            "selectPage"=>"Resume/home"
+        $_user=$this->Profile->getProfile();
+        $_data=array(
+            "_selectPage"=>"Resume/home",
+            "_user"=>$_user
         );
-        $this->load->view('HTMLLoader', $data);
+        $this->load->view('HTMLLoader', $_data);
     }
 }
 

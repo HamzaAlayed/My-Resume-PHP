@@ -5,7 +5,15 @@
  * User: Hamza Alayed
  * Date: 5/8/14
  * Time: 5:45 PM
- */ ?>
+ *
+ * PHP version 5
+ *
+ * $data array holds the $test value
+ *
+ * @see Home::index()
+ * @var Home $_selectPage
+ */
+?>
 <!DOCTYPE html>
 <html lang="en-US">
     <?php $this->load->view("Head");?>
@@ -20,7 +28,7 @@
         </div>
         <div class="hfeed site" id="page">
             <?php $this->load->view("Header");?>
-            <?php $this->load->view($selectPage);?>
+            <?php $this->load->view($_selectPage);?>
             <?php $this->load->view("Footer");?>
         </div>
     </body>
