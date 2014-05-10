@@ -59,7 +59,7 @@ CREATE TABLE `skillTypes` (
 -- Table structure for table `skilles`
 -- 
 
-CREATE TABLE `skilles` (
+CREATE TABLE `skills` (
   `skillId` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Skill ID',
   `skillTitel` varchar(150) NOT NULL COMMENT 'Skill Header',
   `skillType` int(5) NOT NULL COMMENT 'Skill Type',

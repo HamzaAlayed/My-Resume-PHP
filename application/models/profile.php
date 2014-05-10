@@ -19,7 +19,7 @@
 
 
 /**
- * Class CategoriesModule
+ * Class Profile
  *
  * PHP version 5
  *

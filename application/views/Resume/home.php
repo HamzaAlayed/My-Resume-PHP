@@ -7,6 +7,7 @@
  * Date: 5/8/14
  * Time: 5:45 PM
  */
+
 ?>
 <div id="main">
     <div class="content_area" id="primary">
@@ -120,46 +121,33 @@
                     <h3 class="widget_title">Programming skills</h3>
 
                     <div class="widget_inner style_1">
-                        <div class="skills_row odd first">
-                            <span class="caption">Wordpress</span>
-                            <span class="progressbar">
-                                <span data-process="90%" class="progress blue">
-                                    <span class="value">90%</span>
+                        <?php
+                        $_lines=$_skills['_skills']['_lines'];
+
+                        for ($i=0;$i<count($_lines);$i++) {
+
+                            ?>
+                            <div class="skills_row
+                            <?php echo ($i%2==0)?'odd':'even';?>
+                            <?php echo ($i==0)?'first':'';?>">
+                                <span class="caption">
+                                    <?php echo $_lines[$i]['_title'];?>
                                 </span>
-                            </span>
-                        </div>
-                        <div class="skills_row even">
-                            <span class="caption">PHP</span>
-                            <span class="progressbar">
-                                <span data-process="80%" class="progress aqua">
-                                    <span class="value">80%</span>
+                                <span class="progressbar">
+                                    <span
+                                        data-process="
+                                        <?php echo $_lines[$i]['_value'];?>%"
+                                        class="progress blue">
+                                        <span class="value">
+                                            <?php echo $_lines[$i]['_value'];?>%
+                                        </span>
+                                    </span>
                                 </span>
-                            </span>
-                        </div>
-                        <div class="skills_row odd">
-                            <span class="caption">HTML</span>
-                            <span class="progressbar">
-                                <span data-process="93%" class="progress green">
-                                    <span class="value">93%</span>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="skills_row even">
-                            <span class="caption">CSS</span>
-                            <span class="progressbar">
-                                <span data-process="80%" class="progress yellow">
-                                    <span class="value">80%</span>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="skills_row odd">
-                            <span class="caption">MySQL</span>
-                            <span class="progressbar">
-                                <span data-process="70%" class="progress red">
-                                    <span class="value">70%</span>
-                                </span>
-                            </span>
-                        </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+
                     </div>
                 </aside>
                 <aside class="widget widget_skills">
