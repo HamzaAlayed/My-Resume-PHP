@@ -6,8 +6,11 @@
  * User: Hamza Alayed
  * Date: 5/8/14
  * Time: 5:45 PM
- */
 
+echo "<pre>";
+print_r($_skills);
+echo "</pre>";
+ */
 ?>
 <div id="main">
     <div class="content_area" id="primary">
@@ -118,25 +121,26 @@
         <div class="section_body resume_section_body">
             <div class="sidebar resume_sidebar">
                 <aside class="widget widget_skills">
-                    <h3 class="widget_title">Programming skills</h3>
+                    <h3 class="widget_title">
+                        <?php echo $_skills['_skills']['_lines'][0]['_typeTitle']?>
+                    </h3>
 
                     <div class="widget_inner style_1">
                         <?php
                         $_lines=$_skills['_skills']['_lines'];
 
                         for ($i=0;$i<count($_lines);$i++) {
-
+                            $_oddEv=($i%2==0)?'odd':'even';
+                            $_first=($i==0)?'first':'';
+                            $_value=$_lines[$i]['_value'];
                             ?>
-                            <div class="skills_row
-                            <?php echo ($i%2==0)?'odd':'even';?>
-                            <?php echo ($i==0)?'first':'';?>">
+                            <div class="skills_row <?php echo $_oddEv." ".$_first?>">
                                 <span class="caption">
                                     <?php echo $_lines[$i]['_title'];?>
                                 </span>
                                 <span class="progressbar">
                                     <span
-                                        data-process="
-                                        <?php echo $_lines[$i]['_value'];?>%"
+                                        data-process="<?php echo $_value?>%"
                                         class="progress blue">
                                         <span class="value">
                                             <?php echo $_lines[$i]['_value'];?>%
@@ -175,12 +179,18 @@
                         </div>
                         <div class="svg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="piechart">
-                                <path d="M66,66 L130,66  A64,64 0 0,1 57,129 z" fill="#327ea3"></path>
-                                <path d="M66,66 L57, 129 A64,64 0 0,1 2,60 z" fill="#4ca5d0"></path>
-                                <path d="M66,66 L2,  60  A64,64 0 0,1 34,11 z" fill="#6ca338"></path>
-                                <path d="M66,66 L34, 11  A64,64 0 0,1 103,14 z" fill="#ffbc38"></path>
-                                <path d="M66,66 L103,14  A64,64 0 0,1 130,66 z" fill="#e82c0c"></path>
-                                <circle cx="66" cy="66" r="40" fill="#ffffff"></circle>
+                                <path d="M66,66 L130,66  A64,64 0 0,1 57, 129 z"
+                                      fill="#327ea3"></path>
+                                <path d="M66,66 L57, 129 A64,64 0 0,1 2,  60  z"
+                                      fill="#4ca5d0"></path>
+                                <path d="M66,66 L2,  60  A64,64 0 0,1 34, 11  z"
+                                      fill="#6ca338"></path>
+                                <path d="M66,66 L34, 11  A64,64 0 0,1 103,14  z"
+                                      fill="#ffbc38"></path>
+                                <path d="M66,66 L103,14  A64,64 0 0,1 130,66  z"
+                                      fill="#e82c0c"></path>
+                                <circle cx="66" cy="66" r="40"
+                                        fill="#ffffff"></circle>
                             </svg>
                         </div>
                     </div>
@@ -189,24 +199,30 @@
                     <h3 class="widget_title">Language skills</h3>
 
                     <div class="widget_inner style_3">
-                        <div class="skills_row odd first">
-                            <span class="caption">English</span>
-                            <span class="progressbar">
-                                <span data-process="80%" class="progress aqua"></span>
-                            </span>
-                        </div>
-                        <div class="skills_row even">
-                            <span class="caption">French</span>
-                            <span class="progressbar">
-                                <span data-process="60%" class="progress green"></span>
-                            </span>
-                        </div>
-                        <div class="skills_row odd">
-                            <span class="caption">Spain</span>
-                            <span class="progressbar">
-                                <span data-process="80%" class="progress yellow"></span>
-                            </span>
-                        </div>
+                        <?php
+                        $_circle=$_skills['_skills']['_circle'];
+
+                        for ($i=0;$i<count($_circle);$i++) {
+                            $_oddEv=($i%2==0)?'odd':'even';
+                            $_first=($i==0)?'first':'';
+                            $_value=$_circle[$i]['_value'];
+                            $_color=$_circle[$i]['_color'];
+                            ?>
+                            <div class="skills_row <?php echo $_oddEv." ".$_first?>">
+                                <span class="caption">
+                                    <?php echo $_circle[$i]['_title'];?>
+                                </span>
+                                <span class="progressbar">
+                                    <span data-process="<?php echo $_value?>%"
+                                          class="progress"
+                                          style=
+                                          "background-color:#<?php echo $_color?>;">
+                                          </span>
+                                </span>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </aside>
             </div>
@@ -214,48 +230,63 @@
                 <div class="category resume_category resume_category_1 first even">
                     <div class="category_header resume_category_header">
                         <h3 class="category_title">
-                            <span class="category_title_icon aqua"></span>
+                            <span class="category_title_icon" style="background-color:#<?php echo $_skills['_skills']['_EMPLOYMENT'][0]['_color']?>"></span>
                             Employment
                         </h3>
                     </div>
                     <div class="category_body resume_category_body">
-                        <article class="post resume_post resume_post_1 first even">
-                            <div class="post_header resume_post_header">
-                                <div class="resume_period">
-                                    <span class="period_from">2003</span>
-                                    -
-                                    <span class="period_to">2007</span>
+                        <?php
+                        $_EMPLOYMENT=$_skills['_skills']['_EMPLOYMENT'];
+
+                        for ($i=0;$i<count($_circle);$i++) {
+                            $_oddEv=($i%2==0)?'odd':'even';
+                            $_first=($i==0)?'first':'';
+                            $_value=$_EMPLOYMENT[$i]['_value'];
+                            $_color=$_EMPLOYMENT[$i]['_color'];
+                            $_end=($_EMPLOYMENT[$i]['_paragraphEnd']=='')?
+                                'Present':$_EMPLOYMENT[$i]['_paragraphEnd'];
+                            $_start=$_EMPLOYMENT[$i]['_paragraphStart'];
+                            ?>
+                            <article class="post resume_post resume_post_1 <?php echo $_oddEv." ".$_first?>">
+                                <div class="post_header resume_post_header">
+                                    <div class="resume_period">
+                                        <span class="period_from">
+                                            <?php echo $_start;?>
+                                        </span>
+                                        -
+                                        <span class="period_to">
+                                            <?php echo $_end;?>
+                                        </span>
+                                    </div>
+                                    <h4 class="post_title">
+                                        <span class="post_title_icon"
+                                              style=
+                                           "background-color:#<?php echo $_color?>;">
+
+                                        </span>
+                                        <a href="post-text.html">
+                                            <?php echo $_EMPLOYMENT[$i]['_title'];?>
+                                        </a>
+                                    </h4>
+                                    <h5 class="post_subtitle">
+                                        <?php echo $_EMPLOYMENT[$i]['_paragraphHead'];?>
+                                    </h5>
                                 </div>
-                                <h4 class="post_title">
-                                    <span class="post_title_icon aqua"></span>
-                                    <a href="post-text.html">
-                                        There are many variations of passages
-                                    </a>
-                                </h4>
-                                <h5 class="post_subtitle">Director of department</h5>
-                            </div>
-                            <div class="post_body resume_post_body">
-                                <p>
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                    anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                            </div>
-                        </article>
-                        <article class="post resume_post resume_post_2 odd">
-                            <div class="post_header resume_post_header">
-                                <div class="resume_period"><span class="period_from">2001</span> - <span
-                                        class="period_to period_present">present</span></div>
-                                <h4 class="post_title"><span class="post_title_icon aqua"></span><a href="post-text.html">Cooper
-                                        Union</a></h4>
-                                <h5 class="post_subtitle">Programmer</h5>
-                            </div>
-                            <div class="post_body resume_post_body">
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                    anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </article>
+                                <div class="post_body resume_post_body">
+                                    <p>
+                                    <div id="profile_photo">
+                                        <img src="<?php echo $_EMPLOYMENT[$i]['_paragraphLogo'];?>"
+                                             alt="<?php echo $_EMPLOYMENT[$i]['_title'];?>"
+                                             property="image">
+                                    </div>
+                                    <?php echo $_EMPLOYMENT[$i]['_paragraph'];?>
+                                    </p>
+                                </div>
+                            </article>
+                        <?php
+                        }
+                        ?>
+
                     </div>
                     <!-- .category_body -->
                 </div>

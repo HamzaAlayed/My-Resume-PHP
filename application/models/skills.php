@@ -79,24 +79,35 @@ class Skills extends CI_Model
                     $_data['_id'] = $_skills->row()->skillId;
                     $_data['_title'] = $_skills->row()->skillTitel;
                     $_data['_typeId'] = $_skills->row()->skillType;
-                    $_data['_value'] = $_skills->row()->skillType;
-                    $_types=array('typeId'=>$row->skillId);
+                    $_data['_value'] = $_skills->row()->lineValue;
+                    $_data['_color'] = $_skills->row()->legendColor;
+
+                    $_data['_paragraphStart'] = $_skills->row()->paragraphStart;
+                    $_data['_paragraphEnd'] = $_skills->row()->paragraphEnd;
+                    $_data['_paragraphHead'] = $_skills->row()->paragraphHead;
+                    $_data['_paragraphLogo'] = $_skills->row()->paragraphLogo;
+                    $_data['_paragraph'] = $_skills->row()->paragraph;
+
+                    $_types=array('typeId'=>$_data['_typeId']);
 
                     $_types =$this->db->get_where($this->_skillType, $_types);
                     if ($_types->num_rows()) {
                         $_data['_type'] = $_types->row()->typeName;
+
+                        $_data['_typeTitle'] = $_types->row()->typeTitle;
                         if (!isset($result['_skills']["_".$_data['_type']])) {
                             $result['_skills']["_".$_data['_type']]=array();
                         }
-                        if (!is_array($result['_skills']["_".$_data['_type']])) {
-                            $result['_skills']["_".$_data['_type']]=array();
-                        }
+
+
                     } else {
                         $_data['_msgType'] = 'Error';
                         $_data['_function'] = 'getUserSkills';
                         $_data['_idType'] = '3';
                         $_data['_errorType']="Unknown Type";
                     }
+
+
 
                 } else {
                     $_data['_msgSkill'] = 'Error';

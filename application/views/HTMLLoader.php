@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <?php $this->load->view("Head");?>
-    <body>
+    <body class="home blog dark">
         <div class="switherHead"></div>
         <div class="colored">
             <div class="blue"></div>
