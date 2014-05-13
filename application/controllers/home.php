@@ -36,6 +36,8 @@
  *
  * @property Portfolio $Portfolio
  *
+ * @property Common $Common
+ *
  * @license  http://www.hamzaalayed.com Policy
  *
  * @link     http://www.hamzaalayed.com
@@ -53,10 +55,11 @@ class Home extends CI_Controller
         $this->load->model("Profile");
         $this->load->model("Skills");
         $this->load->model("Portfolio");
+        $this->load->model("Common");
     }
 
     /**
-     * Add Category To Categories Table
+     * start Home Page
      *
      * @internal param array $data Array For Data to send for view
      *
@@ -74,6 +77,50 @@ class Home extends CI_Controller
             "_portfolio"=>$_portfolio
         );
         $this->load->view('HTMLLoader', $_data);
+    }
+    /**
+     * start Print Page
+     *
+     * @internal param array $data Array For Data to send for view
+     *
+     * @return void
+     */
+    public function printResume()
+    {
+        $_user=$this->Profile->getProfile();
+        $_skills=$this->Skills->getUserSkills();
+        $_portfolio=$this->Portfolio->getUserPortfolios();
+        $_data=array(
+            "_user"=>$_user,
+            "_skills"=>$_skills,
+            "_portfolio"=>$_portfolio
+        );
+        $this->load->view('Resume/print', $_data);
+    }
+    /**
+     * Add Category To Categories Table
+     *
+     * @internal param array $data Array For Data to send for view
+     *
+     * @return void
+     */
+    public function contact()
+    {
+        $_name=$this->input->post('name');
+        $_email=$this->input->post('email');
+        $_body=$this->input->post('msg');
+        $_subject=$_name." send you message from you resume";
+        $_data=array(
+            "_selectPage"=>"Resume/home",
+            "_fromEmail"=>$_email,
+            "_fromName"=>$_name,
+            "_message"=>$_body,
+            "_subject"=>$_subject
+        );
+        $_result= $this->Common->sendEmail(1, $_data);
+        header('Content-Type: application/json');
+        echo json_encode($_result);
+
     }
 }
 

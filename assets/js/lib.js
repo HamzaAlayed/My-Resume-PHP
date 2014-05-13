@@ -127,25 +127,25 @@ jQuery(document).ready(function(){
 			var data = {
 				action: "submit_contact_form",
 				nonce: "e1f9461bc9",
-				user_name: user_name,
-				user_email: user_email,
-				user_site: user_site,
-				user_msg: user_msg
+				name: user_name,
+				email: user_email,
+			    msg: user_msg
 			};
-			jQuery.post("include/sendmail.php", data, userSubmitFormResponse, "text");
+			jQuery.post("home/contact", data, userSubmitFormResponse, "json");
 		}
 	}
 	
 	function userSubmitFormResponse(response) {
-		var rez = JSON.parse(response);
+		var rez = response;
+
 		jQuery(".sc_contact_form .result")
 			.toggleClass("sc_infobox_style_error", false)
 			.toggleClass("sc_infobox_style_success", false);
-		if (rez.error == "") {
+		if (rez.msg == "success") {
 			jQuery(".sc_contact_form .result").addClass("sc_infobox_style_success").html("Your message sended!");
 			setTimeout("jQuery('.sc_contact_form .result').fadeOut(); jQuery('.sc_contact_form form').get(0).reset();", 3000);
 		} else {
-			jQuery(".sc_contact_form .result").addClass("sc_infobox_style_error").html("Transmit failed! " + rez.error);
+			jQuery(".sc_contact_form .result").addClass("sc_infobox_style_error").html("Transmit failed! Email Not Sent");
 		}
 		jQuery(".sc_contact_form .result").fadeIn();
 	}

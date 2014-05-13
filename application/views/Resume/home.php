@@ -100,7 +100,7 @@ echo "</pre>";
     <!-- RESUME -->
     <section class="section resume_section even" id="resume">
         <div id="resume_buttons">
-            <a target="_blank" id="resume_link" href="print/">
+            <a target="_blank" id="resume_link" href="home/printResume/">
                 <span class="label">Print</span>
                 <span class="icon-print icon"></span>
             </a>
@@ -155,47 +155,6 @@ echo "</pre>";
                     </div>
                 </aside>
                 <aside class="widget widget_skills">
-                    <h3 class="widget_title">Graphic Skills</h3>
-
-                    <div class="widget_inner style_2">
-                        <div class="skills_row odd">
-                            <span class="legend blue"></span>
-                            <span class="caption">Adobe Photoshop</span>
-                        </div>
-                        <div class="skills_row even">
-                            <span class="legend aqua"></span>
-                            <span class="caption">Adobe Illustrator</span>
-                        </div>
-                        <div class="skills_row odd">
-                            <span class="legend green"></span>
-                            <span  class="caption">Adobe Indesign</span>
-                        </div>
-                        <div class="skills_row even">
-                            <span class="legend yellow"></span>
-                            <span class="caption">Corel Draw</span></div>
-                        <div class="skills_row odd">
-                            <span class="legend red"></span>
-                            <span class="caption">3D Max</span>
-                        </div>
-                        <div class="svg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="piechart">
-                                <path d="M66,66 L130,66  A64,64 0 0,1 57, 129 z"
-                                      fill="#327ea3"></path>
-                                <path d="M66,66 L57, 129 A64,64 0 0,1 2,  60  z"
-                                      fill="#4ca5d0"></path>
-                                <path d="M66,66 L2,  60  A64,64 0 0,1 34, 11  z"
-                                      fill="#6ca338"></path>
-                                <path d="M66,66 L34, 11  A64,64 0 0,1 103,14  z"
-                                      fill="#ffbc38"></path>
-                                <path d="M66,66 L103,14  A64,64 0 0,1 130,66  z"
-                                      fill="#e82c0c"></path>
-                                <circle cx="66" cy="66" r="40"
-                                        fill="#ffffff"></circle>
-                            </svg>
-                        </div>
-                    </div>
-                </aside>
-                <aside class="widget widget_skills">
                     <h3 class="widget_title">Language skills</h3>
 
                     <div class="widget_inner style_3">
@@ -238,7 +197,7 @@ echo "</pre>";
                         <?php
                         $_EMPLOYMENT=$_skills['_skills']['_EMPLOYMENT'];
 
-                        for ($i=0;$i<count($_circle);$i++) {
+                        for ($i=0;$i<count($_EMPLOYMENT);$i++) {
                             $_oddEv=($i%2==0)?'odd':'even';
                             $_first=($i==0)?'first':'';
                             $_value=$_EMPLOYMENT[$i]['_value'];
@@ -306,7 +265,7 @@ echo "</pre>";
                         <?php
                         $_EDUCATION=$_skills['_skills']['_EDUCATION'];
 
-                        for ($i=0;$i<count($_circle);$i++) {
+                        for ($i=0;$i<count($_EMPLOYMENT);$i++) {
                             $_oddEv=($i%2==0)?'odd':'even';
                             $_first=($i==0)?'first':'';
                             $_value=$_EDUCATION[$i]['_value'];
@@ -425,7 +384,7 @@ echo "</pre>";
                     </h4>
                     <h5 class="post_subtitle">
                         <?php
-                        echo str_replace(' ', ', ', $_portfolios[$i]['_tags']);
+                        echo str_replace(' ', ', ', $_tag);
                         ?>
                     </h5>
                     </article>
@@ -498,7 +457,7 @@ echo "</pre>";
                 <div class="sc_contact_form">
                     <h3 class="title">Let's keep in touch</h3>
 
-                    <form action="include/sendmail.php" method="post">
+                    <form action="contact" method="post">
                         <div class="field">
                             <label class="required" for="sc_contact_form_username">
                                 Name
