@@ -16,7 +16,7 @@ echo "</pre>";
     <div class="content_area" id="primary">
     <div role="main" class="site_content" id="content">
     <section class="section profile_section first odd" id="profile">
-        <a id="blog_page_link" href="blog-category-arhive.html">
+        <a id="blog_page_link" href="blog/">
             <span class="icon-pencil icon"></span>
             <span class="label">Blog</span>
         </a>
@@ -100,7 +100,7 @@ echo "</pre>";
     <!-- RESUME -->
     <section class="section resume_section even" id="resume">
         <div id="resume_buttons">
-            <a target="_blank" id="resume_link" href="print.html">
+            <a target="_blank" id="resume_link" href="print/">
                 <span class="label">Print</span>
                 <span class="icon-print icon"></span>
             </a>
@@ -370,28 +370,39 @@ echo "</pre>";
 <!-- PORTFOLIO -->
 <section class="section portfolio_section odd" id="portfolio">
     <div class="section_header portfolio_section_header">
-        <h2 class="section_title portfolio_section_title"><a href="#"><span class="icon icon-briefcase"></span><span
-                    class="section_name">Portfolio</span></a><span class="section_icon"></span></h2>
+        <h2 class="section_title portfolio_section_title">
+            <a href="#">
+                <span class="icon icon-briefcase"></span>
+                <span class="section_name">Portfolio</span>
+            </a>
+            <span class="section_icon"></span>
+        </h2>
     </div>
     <div class="section_body portfolio_section_body">
         <div class="portfolio_wrapper">
             <ul id="portfolio_iso_filters">
                 <li><a class="current" data-filter="*" href="#">All</a></li>
-                <li><a data-filter=".category_4" href="#">Web</a></li>
+                <li><a data-filter=".web" href="#">Web</a></li>
                 <li><a data-filter=".category_6" href="#">Photo</a></li>
                 <li><a data-filter=".category_5" href="#">Graphics</a></li>
             </ul>
             <div class="portfolio_items">
-                <article class="post portfolio_post portfolio_post_1 first even category_4 category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Beautiful-young-woman-jumping-15095405.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
+                <article class="post portfolio_post portfolio_post_1 first even web category_6">
+                    <div class="post_pic portfolio_post_pic">
+                        <a class="w_hover img-link img-wrap"
+                           href="images_post/bigstock-Beautiful-young-woman-jumping-15095405.jpg">
+                            <span class="overlay"></span>
+                            <span class="link-icon"></span> <img
                                 src="<?= base_url() ?>assets/images_post/bigstock-Beautiful-young-woman-jumping-15095405-504x348.jpg"
-                                alt="Portfolio item 14"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 14</a></h4>
+                                alt="Portfolio item 14"/>
+                        </a>
+                    </div>
+                    <h4 class="post_title">
+                        <a href="portfolio.html">Portfolio item 14</a>
+                    </h4>
                     <h5 class="post_subtitle">Web, Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_2 odd category_4 category_6">
+                <article class="post portfolio_post portfolio_post_2 odd web category_6">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-Cheerful-red-haired-girl-15330950.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -400,7 +411,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio item 13</a></h4>
                     <h5 class="post_subtitle">Web, Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_3 even category_4 category_6">
+                <article class="post portfolio_post portfolio_post_3 even web category_6">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-beautiful-young-woman-in-bikin-43332169.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -409,7 +420,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio item 12</a></h4>
                     <h5 class="post_subtitle">Web, Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_4 odd category_4 category_6">
+                <article class="post portfolio_post portfolio_post_4 odd web category_6">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-Beautiful-stylish-young-woman-38849389.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -436,7 +447,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio 10</a></h4>
                     <h5 class="post_subtitle">Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_7 even category_4 category_6">
+                <article class="post portfolio_post portfolio_post_7 even web category_6">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-art-exhibition-28071347d.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -445,7 +456,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio 9</a></h4>
                     <h5 class="post_subtitle">Web, Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_8 odd category_4 category_5">
+                <article class="post portfolio_post portfolio_post_8 odd web category_5">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-sensual-elegant-young-woman-in-34273394.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -463,7 +474,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio 7</a></h4>
                     <h5 class="post_subtitle">Graphics, Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_10 odd category_4">
+                <article class="post portfolio_post portfolio_post_10 odd web">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-Big-green-alarm-clock-on-dark-44881654.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
@@ -481,7 +492,7 @@ echo "</pre>";
                     <h4 class="post_title"><a href="portfolio.html">Portfolio 5</a></h4>
                     <h5 class="post_subtitle">Photo</h5>
                 </article>
-                <article class="post portfolio_post portfolio_post_12 odd category_4">
+                <article class="post portfolio_post portfolio_post_12 odd web">
                     <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
                                                                 href="images_post/bigstock-Happy-Black-Woman-12039302.jpg">
                             <span class="overlay"></span> <span class="link-icon"></span> <img
