@@ -381,159 +381,68 @@ echo "</pre>";
     <div class="section_body portfolio_section_body">
         <div class="portfolio_wrapper">
             <ul id="portfolio_iso_filters">
-                <li><a class="current" data-filter="*" href="#">All</a></li>
-                <li><a data-filter=".web" href="#">Web</a></li>
-                <li><a data-filter=".category_6" href="#">Photo</a></li>
-                <li><a data-filter=".category_5" href="#">Graphics</a></li>
+                <li>
+                    <a class="current" data-filter="*" href="#">All</a></li>
+                    <?php
+                            $_tags=$_portfolio['_filters'];
+
+                    for ($i=0;$i<count($_tags);$i++) {
+                                $_oddEv=($i%2==0)?'odd':'even';
+                                $_first=($i==0)?'first':'';
+                        ?>
+                        <li>
+                            <a data-filter=".<?php echo $_tags[$i];?>" href="#">
+                                <?php echo $_tags[$i];?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
             </ul>
             <div class="portfolio_items">
-                <article class="post portfolio_post portfolio_post_1 first even web category_6">
+                <?php
+                $_portfolios=$_portfolio['_portfolios'];
+
+                for ($i=0;$i<count($_portfolios);$i++) {
+                    $_oddEv=($i%2==0)?'odd':'even';
+                    $_first=($i==0)?'first':'';
+                    $_tag=implode(' ', $_portfolios[$i]['_tags']);
+                    ?>
+                    <article class="post portfolio_post portfolio_post_1 <?php echo $_oddEv." ".$_first." ".$_tag?>">
                     <div class="post_pic portfolio_post_pic">
                         <a class="w_hover img-link img-wrap"
-                           href="images_post/bigstock-Beautiful-young-woman-jumping-15095405.jpg">
+                           href="<?php echo $_portfolios[$i]['_link']?>">
                             <span class="overlay"></span>
-                            <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Beautiful-young-woman-jumping-15095405-504x348.jpg"
-                                alt="Portfolio item 14"/>
+                            <span class="link-icon"></span>
+                            <img src="<?php echo $_portfolios[$i]['_img']?>"
+                                 alt="<?php echo $_portfolios[$i]['_title']?>"/>
                         </a>
                     </div>
                     <h4 class="post_title">
-                        <a href="portfolio.html">Portfolio item 14</a>
+                        <a href="<?php echo $_portfolios[$i]['_link']?>">
+                            <?php echo $_portfolios[$i]['_title']?>
+                        </a>
                     </h4>
-                    <h5 class="post_subtitle">Web, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_2 odd web category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Cheerful-red-haired-girl-15330950.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Cheerful-red-haired-girl-15330950-504x348.jpg"
-                                alt="Portfolio item 13"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 13</a></h4>
-                    <h5 class="post_subtitle">Web, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_3 even web category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-beautiful-young-woman-in-bikin-43332169.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-beautiful-young-woman-in-bikin-43332169-504x348.jpg"
-                                alt="Portfolio item 12"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 12</a></h4>
-                    <h5 class="post_subtitle">Web, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_4 odd web category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Beautiful-stylish-young-woman-38849389.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Beautiful-stylish-young-woman-38849389-504x348.jpg"
-                                alt="Portfolio item 11"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 11</a></h4>
-                    <h5 class="post_subtitle">Web, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_5 even category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Close-up-image-of-an-office-wo-41874253-1024x682.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Close-up-image-of-an-office-wo-41874253-1024x682-504x348.jpg"
-                                alt="Portfolio item 15"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 15</a></h4>
-                    <h5 class="post_subtitle">Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_6 odd category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-christmas-girl-young-beautifu-38594893.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-christmas-girl-young-beautifu-38594893-504x348.jpg"
-                                alt="Portfolio 10"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 10</a></h4>
-                    <h5 class="post_subtitle">Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_7 even web category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-art-exhibition-28071347d.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-art-exhibition-28071347d-504x348.jpg"
-                                alt="Portfolio 9"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 9</a></h4>
-                    <h5 class="post_subtitle">Web, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_8 odd web category_5">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-sensual-elegant-young-woman-in-34273394.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-sensual-elegant-young-woman-in-34273394-504x348.jpg"
-                                alt="Portfolio 8"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 8</a></h4>
-                    <h5 class="post_subtitle">Web, Graphics</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_9 even category_5 category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Sexy-woman-wearing-red-dress-36516409.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Sexy-woman-wearing-red-dress-36516409-504x348.jpg"
-                                alt="Portfolio 7"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 7</a></h4>
-                    <h5 class="post_subtitle">Graphics, Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_10 odd web">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Big-green-alarm-clock-on-dark-44881654.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Big-green-alarm-clock-on-dark-44881654-504x348.jpg"
-                                alt="Lorem Ipsum"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Lorem Ipsum</a></h4>
-                    <h5 class="post_subtitle">Web</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_11 even category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Laying-retriever-44861077.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Laying-retriever-44861077-504x348.jpg"
-                                alt="Portfolio 5"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 5</a></h4>
-                    <h5 class="post_subtitle">Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_12 odd web">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Happy-Black-Woman-12039302.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Happy-Black-Woman-12039302-504x348.jpg"
-                                alt="Portfolio 4"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio 4</a></h4>
-                    <h5 class="post_subtitle">Web</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_13 even category_5">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Female-tennis-player-7140367.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Female-tennis-player-7140367-504x348.jpg"
-                                alt="Portfolio item 3"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 3</a></h4>
-                    <h5 class="post_subtitle">Graphics</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_14 odd category_6">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Freedom-happy-free-couple-in-31838090.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Freedom-happy-free-couple-in-31838090-504x348.jpg"
-                                alt="Portfolio item 2"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 2</a></h4>
-                    <h5 class="post_subtitle">Photo</h5>
-                </article>
-                <article class="post portfolio_post portfolio_post_15 even category_1 category_5">
-                    <div class="post_pic portfolio_post_pic"><a class="w_hover img-link img-wrap"
-                                                                href="images_post/bigstock-Close-up-image-of-an-office-wo-41874253-1024x682.jpg">
-                            <span class="overlay"></span> <span class="link-icon"></span> <img
-                                src="<?= base_url() ?>assets/images_post/bigstock-Close-up-image-of-an-office-wo-41874253-1024x682-504x348.jpg"
-                                alt="Portfolio item 15"/> </a></div>
-                    <h4 class="post_title"><a href="portfolio.html">Portfolio item 1</a></h4>
-                    <h5 class="post_subtitle">Web, Graphics</h5>
-                </article>
+                    <h5 class="post_subtitle">
+                        <?php
+                        echo str_replace(' ', ', ', $_portfolios[$i]['_tags']);
+                        ?>
+                    </h5>
+                    </article>
+                <?php
+                }
+                ?>
+
             </div>
             <div class="portfolio_iso_pages">
                 <ul id="portfolio_iso_pages">
                 </ul>
-                <div id="portfolio_iso_pages_2"> Page <span id="portfolio_iso_pages_current">1</span> of <span
-                        id="portfolio_iso_pages_total"></span></div>
+                <div id="portfolio_iso_pages_2">
+                    Page 
+                    <span id="portfolio_iso_pages_current">1</span> 
+                    of 
+                    <span id="portfolio_iso_pages_total"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -544,18 +453,35 @@ echo "</pre>";
 <!-- CONTACTS -->
 <section class="section contact_section even" id="contact">
     <div class="section_header contact_section_header">
-        <h2 class="section_title contact_section_title"><a href="#"><span class="icon icon-envelope-alt"></span><span
-                    class="section_name">Contacts</span></a><span class="section_icon"></span></h2>
+        <h2 class="section_title contact_section_title">
+            <a href="#">
+                <span class="icon icon-envelope-alt"></span>
+                <span class="section_name">Contacts</span>
+            </a>
+            <span class="section_icon"></span>
+        </h2>
     </div>
     <div class="section_body contact_section_body">
         <div id="googlemap_data">
             <div id="sc_googlemap" style="width:100%;height:294px;" class="sc_googlemap"></div>
             <div class="add_info">
                 <div class="profile_row header "> Contact info</div>
-                <div class="profile_row address"><span class="th">Address</span><span class="td"></span></div>
-                <div class="profile_row phone"><span class="th">Phone</span><span class="td"></span></div>
-                <div class="profile_row email"><span class="th">Email</span><span class="td"></span></div>
-                <div class="profile_row website"><span class="th">Website</span><span class="td"></span></div>
+                <div class="profile_row address">
+                    <span class="th">Address</span>
+                    <span class="td"></span>
+                </div>
+                <div class="profile_row phone">
+                    <span class="th">Phone</span>
+                    <span class="td"></span>
+                </div>
+                <div class="profile_row email">
+                    <span class="th">Email</span>
+                    <span class="td"></span>
+                </div>
+                <div class="profile_row website">
+                    <span class="th">Website</span>
+                    <span class="td"></span>
+                </div>
             </div>
         </div>
         <div class="sidebar contact_sidebar">
@@ -574,18 +500,31 @@ echo "</pre>";
 
                     <form action="include/sendmail.php" method="post">
                         <div class="field">
-                            <label class="required" for="sc_contact_form_username">Name</label>
-                            <input type="text" name="username" id="sc_contact_form_username"/>
+                            <label class="required" for="sc_contact_form_username">
+                                Name
+                            </label>
+                            <input type="text" name="username"
+                                   id="sc_contact_form_username"/>
                         </div>
                         <div class="field">
-                            <label class="required" for="sc_contact_form_email">Email</label>
-                            <input type="text" name="email" id="sc_contact_form_email"/>
+                            <label class="required" for="sc_contact_form_email">
+                                Email
+                            </label>
+                            <input type="text" name="email"
+                                   id="sc_contact_form_email"/>
                         </div>
                         <div class="field message">
-                            <label class="required" for="sc_contact_form_message">Your Message</label>
-                            <textarea name="message" id="sc_contact_form_message"></textarea>
+                            <label class="required" for="sc_contact_form_message">
+                                Your Message
+                            </label>
+                            <textarea name="message"
+                                      id="sc_contact_form_message"></textarea>
                         </div>
-                        <div class="button"><a class="enter" href="#"><span>Submit</span></a></div>
+                        <div class="button">
+                            <a class="enter" href="#">
+                                <span>Submit</span>
+                            </a>
+                        </div>
                     </form>
                     <div class="result sc_infobox"></div>
                 </div>

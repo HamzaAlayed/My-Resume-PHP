@@ -34,6 +34,8 @@
  *
  * @property Skills $Skills
  *
+ * @property Portfolio $Portfolio
+ *
  * @license  http://www.hamzaalayed.com Policy
  *
  * @link     http://www.hamzaalayed.com
@@ -50,6 +52,7 @@ class Home extends CI_Controller
         $this->load->helper("url");
         $this->load->model("Profile");
         $this->load->model("Skills");
+        $this->load->model("Portfolio");
     }
 
     /**
@@ -63,10 +66,12 @@ class Home extends CI_Controller
     {
         $_user=$this->Profile->getProfile();
         $_skills=$this->Skills->getUserSkills();
+        $_portfolio=$this->Portfolio->getUserPortfolios();
         $_data=array(
             "_selectPage"=>"Resume/home",
             "_user"=>$_user,
-            "_skills"=>$_skills
+            "_skills"=>$_skills,
+            "_portfolio"=>$_portfolio
         );
         $this->load->view('HTMLLoader', $_data);
     }
