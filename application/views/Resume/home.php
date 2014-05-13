@@ -272,12 +272,13 @@ echo "</pre>";
                                         <?php echo $_EMPLOYMENT[$i]['_paragraphHead'];?>
                                     </h5>
                                 </div>
-                                <div class="post_body resume_post_body">
+                                <div class="post_body resume_post_body"
+                                     style="min-height: 95px;">
                                     <p>
                                     <div id="profile_photo">
                                         <img src="<?php echo $_EMPLOYMENT[$i]['_paragraphLogo'];?>"
                                              alt="<?php echo $_EMPLOYMENT[$i]['_title'];?>"
-                                             property="image">
+                                             property="image"/>
                                     </div>
                                     <?php echo $_EMPLOYMENT[$i]['_paragraph'];?>
                                     </p>
@@ -293,39 +294,70 @@ echo "</pre>";
                 <!-- .category -->
                 <div class="category resume_category resume_category_2 odd">
                     <div class="category_header resume_category_header">
-                        <h3 class="category_title"><span class="category_title_icon green"></span>Education</h3>
+                        <h3 class="category_title">
+                            <span class="category_title_icon"
+                                  style="background-color:#<?php echo $_skills['_skills']['_EDUCATION'][0]['_color']?>">
+
+                                  </span>
+                            Employment
+                        </h3>
                     </div>
                     <div class="category_body resume_category_body">
-                        <article class="post resume_post resume_post_1 first even">
-                            <div class="post_header resume_post_header">
-                                <div class="resume_period"><span class="period_from">1999</span> - <span class="period_to">2001</span>
+                        <?php
+                        $_EDUCATION=$_skills['_skills']['_EDUCATION'];
+
+                        for ($i=0;$i<count($_circle);$i++) {
+                            $_oddEv=($i%2==0)?'odd':'even';
+                            $_first=($i==0)?'first':'';
+                            $_value=$_EDUCATION[$i]['_value'];
+                            $_color=$_EDUCATION[$i]['_color'];
+                            $_end=($_EDUCATION[$i]['_paragraphEnd']=='')?
+                                'Present':$_EDUCATION[$i]['_paragraphEnd'];
+                            $_start=$_EDUCATION[$i]['_paragraphStart'];
+                            ?>
+                            <article class="post resume_post resume_post_1 <?php echo $_oddEv." ".$_first?>">
+                                <div class="post_header resume_post_header">
+                                    <div class="resume_period">
+                                        <span class="period_from">
+                                            <?php echo $_start;?>
+                                        </span>
+                                        -
+                                        <span class="period_to">
+                                            <?php echo $_end;?>
+                                        </span>
+                                    </div>
+                                    <h4 class="post_title">
+                                        <span class="post_title_icon"
+                                              style=
+                                              "background-color:#<?php echo $_color?>;">
+
+                                        </span>
+                                        <a href="post-text.html">
+                                            <?php echo $_EDUCATION[$i]['_title'];?>
+                                        </a>
+                                    </h4>
+                                    <h5 class="post_subtitle">
+                                        <?php echo $_EDUCATION[$i]['_paragraphHead'];?>
+                                    </h5>
                                 </div>
-                                <h4 class="post_title"><span class="post_title_icon green"></span><a href="post-text.html">Lorem
-                                        Contrary to popular belief</a></h4>
-                                <h5 class="post_subtitle">Web design</h5>
-                            </div>
-                            <div class="post_body resume_post_body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </article>
-                        <article class="post resume_post resume_post_2 odd">
-                            <div class="post_header resume_post_header">
-                                <div class="resume_period"><span class="period_from">1996</span> - <span class="period_to">2000</span>
+                                <div class="post_body resume_post_body"
+                                     style="min-height: 95px;">
+                                    <p>
+                                    <div id="profile_photo">
+                                        <img src="<?php echo $_EDUCATION[$i]['_paragraphLogo'];?>"
+                                             alt="<?php echo $_EDUCATION[$i]['_title'];?>"
+                                             property="image"/>
+                                    </div>
+                                    <?php echo $_EDUCATION[$i]['_paragraph'];?>
+                                    </p>
                                 </div>
-                                <h4 class="post_title"><span class="post_title_icon green"></span><a href="post-text.html">Lorem
-                                        Ipsum is simply dummy text</a></h4>
-                                <h5 class="post_subtitle">Graphic design</h5>
-                            </div>
-                            <div class="post_body resume_post_body">
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur.</p>
-                            </div>
-                        </article>
+                            </article>
+                        <?php
+                        }
+                        ?>
+
                     </div>
-                    <!-- /category_body -->
+                    <!-- .category_body -->
                 </div>
                 <!-- /category -->
             </div>
