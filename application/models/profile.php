@@ -79,6 +79,7 @@ class Profile extends CI_Model
             $result['_title'] = $query->row()->profileTitle;
             $result['_about'] = $query->row()->profileAbout;
             $result['_img'] = $query->row()->profileImg;
+            $result['_resume'] = $query->row()->resumeLink;
         }
         return $result;
     }

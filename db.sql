@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: custsql-ipg42.eigbox.net
--- Generation Time: May 13, 2014 at 01:42 PM
+-- Generation Time: May 14, 2014 at 09:49 AM
 -- Server version: 5.5.32
 -- PHP Version: 4.4.9
 -- 
@@ -54,6 +54,7 @@ CREATE TABLE `profile` (
   `profileTitle` varchar(100) NOT NULL COMMENT 'User Title',
   `profileAbout` text NOT NULL COMMENT 'User About',
   `profileImg` text NOT NULL COMMENT 'User Image',
+  `resumeLink` text NOT NULL COMMENT 'Resume File',
   PRIMARY KEY (`profileId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='User Profile Information' AUTO_INCREMENT=2 ;
 
@@ -61,7 +62,7 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 -- 
 
-INSERT INTO `profile` VALUES (1, 'Hamza Alayed', '1985-09-07', 'Arjan, Amman, Jordan', '+962785330496', 'me@hamzaalayed.com', 'http://www.hamzaalayed.com/', 'WEB / MOBILE DEVELOPER  Projects Analyst', 'I taught myself how to learn quickly. \r\nThis way gave me a lot of skills in a short time. \r\nI started in 2005 to now I''ve gained a lot of skills and I’m looking to earn more.\r\nMy objective is Obtain a position where I can maximize my Development skills', 'http://hamzaalayed.com/images/pic.png');
+INSERT INTO `profile` VALUES (1, 'Hamza Alayed', '1985-09-07', 'Arjan, Amman, Jordan', '+962785330496', 'me@hamzaalayed.com', 'http://www.hamzaalayed.com/', 'WEB / MOBILE DEVELOPER  Projects Analyst', 'I taught myself how to learn quickly. \r\nThis way gave me a lot of skills in a short time. \r\nI started in 2005 to now I''ve gained a lot of skills and I’m looking to earn more.\r\nMy objective is Obtain a position where I can maximize my Development skills', 'http://hamzaalayed.com/images/pic.png', 'Hamzah%20Alayed%20Resume.pdf');
 
 -- --------------------------------------------------------
 

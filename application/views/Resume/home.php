@@ -104,7 +104,8 @@ echo "</pre>";
                 <span class="label">Print</span>
                 <span class="icon-print icon"></span>
             </a>
-            <a target="_blank" id="resume_link_download">
+            <a href="<?php echo base_url()?>assets/uploads/users/<?php echo $_user["_id"];?>/<?php echo $_user["_resume"];?>"
+               target="_blank" id="resume_link_download">
                 <span class="label">Download</span>
                 <span class="icon-download icon"></span>
             </a>
