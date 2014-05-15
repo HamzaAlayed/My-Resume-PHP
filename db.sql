@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: custsql-ipg61.eigbox.net
--- Generation Time: May 15, 2014 at 05:18 PM
+-- Generation Time: May 15, 2014 at 06:26 PM
 -- Server version: 5.5.32
 -- PHP Version: 4.4.9
 -- 
@@ -29,6 +29,31 @@ CREATE TABLE `blog_category` (
 
 INSERT INTO `blog_category` VALUES (1, 'Java', 0);
 INSERT INTO `blog_category` VALUES (2, 'PHP', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `blog_posts`
+-- 
+
+CREATE TABLE `blog_posts` (
+  `postId` int(9) NOT NULL AUTO_INCREMENT COMMENT 'Article Id',
+  `postTitle` text NOT NULL COMMENT 'Article Title',
+  `postDate` datetime NOT NULL COMMENT 'Article Publish Date',
+  `postBody` longtext NOT NULL COMMENT 'Article Body',
+  `postUser` int(9) NOT NULL COMMENT 'Article User',
+  `postType` int(9) NOT NULL COMMENT 'Article Type',
+  `poetTags` int(9) NOT NULL COMMENT 'Article tags',
+  `PostTypeHead` longtext NOT NULL COMMENT 'Article Head view',
+  `postIsPublished` int(1) NOT NULL COMMENT 'Article Is Published',
+  `postLastEdit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Article Last Edit',
+  PRIMARY KEY (`postId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Blog Posts' AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `blog_posts`
+-- 
+
 
 -- --------------------------------------------------------
 
