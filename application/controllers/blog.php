@@ -30,6 +30,11 @@
  *
  * @author   Hamza Alayed <me@hamzaalayed.com>
  *
+ * @property Profile $Profile
+ *
+ * @property Categories $Categories
+ *
+ * @property Types $Types
  *
  * @license  http://www.hamzaalayed.com Policy
  *
@@ -45,6 +50,9 @@ class Blog extends CI_Controller
     {
         parent::__construct();
         $this->load->helper("url");
+        $this->load->model("Profile");
+        $this->load->model('blog/Categories');
+        $this->load->model('blog/Types');
     }
 
     /**
@@ -56,9 +64,14 @@ class Blog extends CI_Controller
      */
     public function index()
     {
-
+        $_user=$this->Profile->getProfile();
+        $_categories=$this->Categories->getCategories();
+        $_types=$this->Types->getTypes();
         $_data=array(
             "_selectPage"=>"Blog/home",
+            "_user"=>$_user,
+            "_categories"=> $_categories,
+            "_types"=> $_types
 
         );
         $this->load->view('HTMLLoader', $_data);

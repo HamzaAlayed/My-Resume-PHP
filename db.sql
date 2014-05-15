@@ -2,13 +2,56 @@
 -- version 2.8.0.1
 -- http://www.phpmyadmin.net
 -- 
--- Host: custsql-ipg42.eigbox.net
--- Generation Time: May 14, 2014 at 09:49 AM
+-- Host: custsql-ipg61.eigbox.net
+-- Generation Time: May 15, 2014 at 05:18 PM
 -- Server version: 5.5.32
 -- PHP Version: 4.4.9
 -- 
 -- Database: `myresume`
 -- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `blog_category`
+-- 
+
+CREATE TABLE `blog_category` (
+  `catId` int(9) NOT NULL AUTO_INCREMENT COMMENT 'Category Id',
+  `catName` varchar(100) NOT NULL COMMENT 'Category Name',
+  `catParent` int(9) NOT NULL COMMENT 'Parent Category',
+  PRIMARY KEY (`catId`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Blog Categories' AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `blog_category`
+-- 
+
+INSERT INTO `blog_category` VALUES (1, 'Java', 0);
+INSERT INTO `blog_category` VALUES (2, 'PHP', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `blog_types`
+-- 
+
+CREATE TABLE `blog_types` (
+  `typeId` int(9) NOT NULL AUTO_INCREMENT COMMENT 'Type Id',
+  `typeName` varchar(50) NOT NULL COMMENT 'Type Name',
+  PRIMARY KEY (`typeId`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `blog_types`
+-- 
+
+INSERT INTO `blog_types` VALUES (1, 'Text');
+INSERT INTO `blog_types` VALUES (2, 'Video');
+INSERT INTO `blog_types` VALUES (3, 'Audio');
+INSERT INTO `blog_types` VALUES (4, 'Slider');
+INSERT INTO `blog_types` VALUES (5, 'Link');
+INSERT INTO `blog_types` VALUES (6, 'Photo');
 
 -- --------------------------------------------------------
 

@@ -1,5 +1,22 @@
 <?php
 /**
+ * File Footer.php
+ *
+ * PHP version 5
+ *
+ * @category Template
+ *
+ * @package  Footer
+ *
+ * @author   Hamza Alayed <me@hamzaalayed.com>
+ *
+ * @license  http://www.hamzaalayed.com Policy
+ *
+ * @link     http://www.hamzaalayed.com
+ *
+ * Created by PhpStorm.
+ * Project : My-Resume-PHP.
+ * User: Hamza Alayed
  * Created by PhpStorm.
  * Project : My-Resume-PHP.
  * User: Hamza Alayed
@@ -7,15 +24,29 @@
  * Time: 5:15 PM
  */ ?>
 <div id="main"  class="right_sidebar">
-<section id="profile" class="section profile_section odd first blog_page"> <a href="../home" id="profile_page_link"><span class="icon-user icon"></span><span class="label">Profile</span></a>
+<section id="profile" class="section profile_section odd first blog_page">
+    <a href="../home" id="profile_page_link">
+        <span class="icon-user icon"></span>
+        <span class="label">Profile</span>
+    </a>
     <div class="section_header profile_section_header">
         <div id="profile_header">
             <div id="profile_user">
-                <div id="profile_photo"><img src="images_post/bigstock-Portrait-Of-A-Beautiful-Mature-7014470-234x234.jpg" alt="Jefferson Sarah" /></div>
+                <div id="profile_photo">
+                    <img src="<?php echo $_user["_img"];?>"
+                         alt="<?php echo $_user["_name"];?>"
+                         property="image"/>
+                </div>
                 <div id="profile_name_area">
                     <div id="profile_name">
-                        <h1 id="profile_title"><span class="firstname">Sarah</span> <span class="lastname">Jefferson</span></h1>
-                        <h4 id="profile_position">Designer</h4>
+                        <h1 id="profile_title">
+                                    <span class="firstname" property="name">
+                                        <?php echo $_user["_name"];?>
+                                    </span>
+                        </h1>
+                        <h4 id="profile_position" property="jobTitle">
+                            <?php echo $_user["_title"];?>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -25,8 +56,8 @@
 <section id="breadcrumbs" class="section breadcrumbs_section even">
     <div class="section_header breadcrumbs_section_header">
         <ul class="breadcrumbs">
-            <li class="home"><a href="index.html">Home</a></li>
-            <li class="current">All Posts</li>
+            <li class="home"><a href="../home">Home</a></li>
+            <li class="current">Blog</li>
         </ul>
     </div>
 </section>
@@ -34,16 +65,60 @@
     <div id="content" class="site_content blog_content" role="main">
         <section class="section blog_section odd">
             <div class="section_header blog_section_header ">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-pencil"></span><span class="section_name">Jul.04</span></strong></h2>
-                <div class="post-info"> <a href="author.html" class="post_author"><span class="icon-user"></span>admin</a> <a href="post-standart.html" class="comments_count"><span class="icon-comment"></span>0</a> <span class="post_categories"><span class="icon-align-left"></span><a href="blog-category-arhive.html" class="post_categories even first">Post</a></span> </div>
+                <h2 class="section_title blog_section_title">
+                    <strong>
+                        <span class="icon icon-pencil"></span>
+                        <span class="section_name">Jul.04</span>
+                    </strong>
+                </h2>
+                <div class="post-info">
+                    <a href="author.html" class="post_author">
+                        <span class="icon-user"></span>
+                        admin
+                    </a>
+                    <a href="post-standart.html" class="comments_count">
+                        <span class="icon-comment"></span>
+                        0
+                    </a>
+                    <span class="post_categories">
+                        <span class="icon-align-left"></span>
+                        <a href="blog-category-arhive.html"
+                           class="post_categories even first">
+                            Post
+                        </a>
+                    </span>
+                </div>
             </div>
             <div class="section_body blog_section_body">
                 <article class="post ">
-                    <h3 class="post_title"><a href="post-standart.html">Quisque odio eros</a></h3>
-                    <div class="pic"> <a href="post-standart.html" class="w_hover img-link img-wrap"><img alt="Quisque odio eros" src="images_post/girl.jpg" /> <span class="overlay"></span> <span class="link-icon"></span> </a> </div>
+                    <h3 class="post_title">
+                        <a href="post-standart.html">
+                            Quisque odio eros
+                        </a>
+                    </h3>
+                    <div class="pic">
+                        <a href="post-standart.html"
+                           class="w_hover img-link img-wrap">
+                            <img alt="Quisque odio eros"
+                                 src="images_post/girl.jpg" />
+                            <span class="overlay"></span>
+                            <span class="link-icon"></span>
+                        </a>
+                    </div>
                     <div class="text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        <div class="readmore"><a href="post-standart.html" class="more-link"><span class="readmore">Read more</span></a></div>
+                        <p>Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam,
+                            quis nostrud exercitation
+                            ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. </p>
+                        <div class="readmore">
+                            <a href="post-standart.html" class="more-link">
+                                <span class="readmore">Read more</span>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -130,7 +205,9 @@
             <a href="blog-category-arhive.html" class="next">Next</a>
             <div class="pages">
                 <ul>
-                    <li class="current"><a href="blog-category-arhive.html" title="">1</a></li>
+                    <li class="current">
+                        <a href="blog-category-arhive.html" title="">1</a>
+                    </li>
                     <li><a href="blog-category-arhive.html" title="2">2</a></li>
                     <li><a href="blog-category-arhive.html" title="3">3</a></li>
                     <li><a href="blog-category-arhive.html" title="4">4</a></li>
@@ -144,17 +221,55 @@
 </div>
 <!-- #primary -->
 
-<div id="secondary" class="widget_area sidebar_blog right_sidebar sidebar-blog" role="complementary">
+<div id="secondary"
+     class="widget_area sidebar_blog right_sidebar sidebar-blog"
+     role="complementary">
     <!-- Categories -->
     <aside class="widget widget_categories">
         <h3 class="widget_title">Categories</h3>
         <ul>
-            <li class="cat-item"><a href="blog-category-arhive.html" title="View all posts filed under Slider">Slider</a> </li>
-            <li class="cat-item"><a href="blog-category-arhive.html" title="View all posts filed under Video">Video</a> </li>
-            <li class="cat-item"><a href="blog-category-arhive.html" title="View all posts filed under Video">Audio</a> </li>
+            <?php
+
+            $_categories=$_categories['categories'];
+            for ($i=0;$i<count($_categories);$i++) {
+                $link=$_categories[$i]['_name'].'/'.$_categories[$i]['_id'];
+
+                ?>
+                <li class="cat-item">
+                    <a href="category/<?php echo $link ?>"
+                       title="View all posts filed under Slider">
+                        <?php echo $_categories[$i]['_name']; ?>
+                    </a>
+                </li>
+            <?php
+            }
+            ?>
         </ul>
     </aside>
     <!-- /Categories -->
+    <!-- Types -->
+    <aside class="widget widget_categories">
+        <h3 class="widget_title">Types</h3>
+        <ul>
+            <?php
+
+            $_types=$_types['_types'];
+            for ($i=0;$i<count($_types);$i++) {
+                $link=$_types[$i]['_name'].'/'.$_types[$i]['_id'];
+
+                ?>
+                <li class="cat-item">
+                    <a href="type/<?php echo $link ?>"
+                       title="View all posts filed under Slider">
+                        <?php echo $_types[$i]['_name']; ?>
+                    </a>
+                </li>
+            <?php
+            }
+            ?>
+        </ul>
+    </aside>
+    <!-- /Types -->
 
     <!-- Recent Posts -->
     <aside class="widget widget_themerex_recent_posts">
