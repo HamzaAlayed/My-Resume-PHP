@@ -61,11 +61,19 @@ class Posts extends CI_Model
     }
 
     /**
-     * This function to get Blog Category
+     * This function to get Blog Posts Information
+     *
+     * @param array $_criteria Conditions that You Looking For
+     *
+     * @param int   $_limit    How many post you need?
+     *
+     * @param int   $_offset   Start get post from row number X
+     *
+     * @param bool  $_fastView  Do you need whole post body?
      *
      * @return array
      */
-    public function getPosts()
+    private function _getPosts($_criteria=array(),$_limit=10,$_offset=0,$_fastView=false)
     {
 
         $result = array(
@@ -73,8 +81,15 @@ class Posts extends CI_Model
             '_function' => 'getPosts',
             '_id' => '0'
         );
-        $query = $this->db->get($this->_postsTable);
-
+        if (count($_criteria)==0) {
+            $query = $this->db->get($this->_postsTable, $_limit, $_offset);
+        } else {
+            $query = $this->db->get_where(
+                $this->_postsTable,
+                $_criteria, $_limit,
+                $_offset
+            );
+        }
         if ($query->num_rows()) {
             $result['_posts']=array();
             $data=array();
@@ -83,10 +98,10 @@ class Posts extends CI_Model
                     postId;
                 $data['_title']= $row->
                     postTitle;
-                $data['_date']= $row->
-                    postDate;
-                $data['_body']= $row->
-                    postBody;
+                $data['_date']= $this->
+                    _dateFormat($row->postDate);
+                $data['_body']= ($_fastView)?
+                    $row->postBody:$this->_fastView($row->postBody);
                 $data['_user']= $this->
                     Profile->getProfile($row->postUser);
                 $data['_type']= $this->
@@ -95,10 +110,10 @@ class Posts extends CI_Model
                     Tags->getTagsById($row->poetTags);
                 $data['_head']= $row->
                     PostTypeHead;
-                $data['_published']= $row->
-                    postIsPublished;
-                $data['_lastEdit']= $row->
-                    postLastEdit;
+                $data['_published']= ($row->postIsPublished==1)?
+                true:false;
+                $data['_lastEdit']= $this->
+                    _dateFormat($row->postLastEdit);
                 $data['_category']=$this->
                     Categories->getCategoriesById($row->postCategory);
                 array_push($result['_posts'], $data);
@@ -107,9 +122,79 @@ class Posts extends CI_Model
         } else {
             $result['_msg']= 'Error';
             $result['_function']= 'getPosts';
+            $result['_error']= 'No Posts Found';
             $result['_id' ]= '2';
         }
 
         return $result;
+    }
+
+    /**
+     * This function to get Blog latest Posts Information
+     *
+     * @param int    $_catId      Category ID
+     *
+     * @param int    $_typeId     Type ID
+     *
+     * @param int    $_limit      How many post you need
+     *
+     * @param int    $_offset     Start get post from row number X
+     *
+     * @param bool   $_fast       Do you need whole post body?
+     *
+     * @param string $_dateFormat Date Format
+     *
+     * @return array
+     */
+    public function getLatestPosts(
+        $_catId=0,
+        $_typeId=0,
+        $_limit=10,
+        $_offset=0,
+        $_fast=false,
+        $_dateFormat='M.d'
+    ) {
+        $_buildCriteria=array();
+        if ($_catId!=0) {
+            $_buildCriteria['postCategory']=$_catId;
+        }
+        if ($_typeId!=0) {
+            $_buildCriteria['postType']=$_typeId;
+        }
+        $result= $this->_getPosts(
+            $_buildCriteria,
+            $_limit,
+            $_offset,
+            $_fast,
+            $_dateFormat
+        );
+
+        return $result;
+    }
+
+    /**
+     * Cut the Post Body String to view fast
+     *
+     * @param string $_body Post Body
+     *
+     * @return string
+     */
+    private function _fastView($_body='')
+    {
+        return substr($_body, 0, 1000);
+    }
+
+    /**
+     * Date Formatter
+     *
+     * @param string $_date   Date For format
+     *
+     * @param string $_format Format look like
+     *
+     * @return string
+     */
+    private function _dateFormat($_date='',$_format='M.d')
+    {
+        return date($_format, strtotime($_date));
     }
 } 

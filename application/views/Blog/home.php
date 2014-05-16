@@ -22,7 +22,11 @@
  * User: Hamza Alayed
  * Date: 5/14/14
  * Time: 5:15 PM
- */ ?>
+ */
+echo "<pre>";
+//print_r($_latestPosts['_posts']);
+echo "</pre>";
+?>
 <div id="main"  class="right_sidebar">
 <section id="profile" class="section profile_section odd first blog_page">
     <a href="../home" id="profile_page_link">
@@ -63,18 +67,27 @@
 </section>
 <div id="primary" class="content_area">
     <div id="content" class="site_content blog_content" role="main">
-        <section class="section blog_section odd">
+    <?php
+    $_posts=$_latestPosts['_posts'];
+    for ($i=0;$i<count($_posts);$i++) {
+        $_icon=$_posts[$i]['_type']['_types'][0]['_icon'];
+        $_date=$_posts[$i]['_lastEdit'];
+        $_user=$_posts[$i]['_user']['_name'];
+        $_cat=$_posts[$i]['_category']['categories'][0]['_name'];
+        $_title=$_posts[$i]['_title'];
+        ?>
+            <section class="section blog_section odd">
             <div class="section_header blog_section_header ">
                 <h2 class="section_title blog_section_title">
                     <strong>
-                        <span class="icon icon-pencil"></span>
-                        <span class="section_name">Jul.04</span>
+                        <span class="icon icon-<?php echo($_icon);?>"></span>
+                        <span class="section_name"><?php echo($_date);?></span>
                     </strong>
                 </h2>
                 <div class="post-info">
                     <a href="author.html" class="post_author">
                         <span class="icon-user"></span>
-                        admin
+                        <?php echo($_user);?>
                     </a>
                     <a href="post-standart.html" class="comments_count">
                         <span class="icon-comment"></span>
@@ -84,7 +97,7 @@
                         <span class="icon-align-left"></span>
                         <a href="blog-category-arhive.html"
                            class="post_categories even first">
-                            Post
+                            <?php echo($_cat);?>
                         </a>
                     </span>
                 </div>
@@ -93,7 +106,7 @@
                 <article class="post ">
                     <h3 class="post_title">
                         <a href="post-standart.html">
-                            Quisque odio eros
+                            <?php echo($_title);?>
                         </a>
                     </h3>
                     <div class="pic">
@@ -123,6 +136,9 @@
                 </article>
             </div>
         </section>
+    <?php
+    }
+        ?>
         <section class="section blog_section even">
             <div class="section_header blog_section_header gallery">
                 <h2 class="section_title blog_section_title"><strong><span class="icon icon-camera"></span><span class="section_name">Jul.03</span></strong></h2>

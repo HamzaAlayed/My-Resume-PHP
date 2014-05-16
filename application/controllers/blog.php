@@ -68,7 +68,7 @@ class Blog extends CI_Controller
     public function index()
     {
         $_user=$this->Profile->getProfile();
-        $_latestPosts=$this->Posts->getPosts();
+        $_latestPosts=$this->Posts->getLatestPosts(0, 0, 1, 0, true);
         $_categories=$this->Categories->getCategories();
         $_types=$this->Types->getTypes();
         $_data=array(

@@ -69,6 +69,7 @@ class Types extends CI_Model
             foreach ($query->result() as $row) {
                 $data['_id']= $row->typeId;
                 $data['_name']= $row->typeName;
+                $data['_icon']= $row->typeIcon;
                 array_push($result['_types'], $data);
                 $result['_msg']= 'Success';
             }
@@ -111,6 +112,7 @@ class Types extends CI_Model
                 foreach ($query->result() as $row) {
                     $data['_id']= $row->typeId;
                     $data['_name']= $row->typeName;
+                    $data['_icon']= $row->typeIcon;
                     array_push($result['_types'], $data);
                     $result['_msg']= 'Success';
                 }
