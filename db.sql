@@ -29,7 +29,6 @@ CREATE TABLE `blog_category` (
 
 INSERT INTO `blog_category` VALUES (1, 'Java', 0);
 INSERT INTO `blog_category` VALUES (2, 'PHP', 0);
-
 -- --------------------------------------------------------
 
 -- 

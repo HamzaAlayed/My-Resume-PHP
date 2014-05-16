@@ -81,4 +81,49 @@ class Categories extends CI_Model
 
         return $result;
     }
+
+    /**
+     * Function retrieve Categories information By Id
+     *
+     * @param int $_id Category Id
+     *
+     * @return array
+     */
+    public function getCategoriesById($_id=0)
+    {
+
+        $result = array(
+            '_msg' => 'Error',
+            '_function' => 'getCategoriesById',
+            '_id' => '0'
+        );
+        if ($_id==0 || $_id=='') {
+            $result['_msg']= 'Error';
+            $result['_function']= 'getCategoriesById';
+            $result['_error']='Please Select Category Id';
+            $result['_id' ]= '2';
+        } else {
+
+            $criteria=array('catId'=>$_id);
+            $query = $this->db->get_where($this->_categoryTable, $criteria);
+
+            if ($query->num_rows()) {
+                $result['categories']=array();
+                $data=array();
+                foreach ($query->result() as $row) {
+                    $data['_id']= $row->catId;
+                    $data['_name']= $row->catName;
+                    $data['_parent']= $row->catParent;
+                    array_push($result['categories'], $data);
+                    $result['_msg']= 'Success';
+                }
+            } else {
+                $result['_msg']= 'Error';
+                $result['_function']= 'getCategoriesById';
+                $result['_error']='Category not Found';
+                $result['_id' ]= '1';
+            }
+        }
+        return $result;
+    }
 } 

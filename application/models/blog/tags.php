@@ -33,9 +33,9 @@
  *
  * @link     http://www.hamzaalayed.com
  */
-class Types extends CI_Model
+class Tags extends CI_Model
 {
-    private $_typesTable="blog_types";
+    private $_tagsTable="blog_tags";
 
     /**
      * Constructor
@@ -53,72 +53,71 @@ class Types extends CI_Model
      *
      * @return array
      */
-    public function getTypes()
+    public function getTags()
     {
 
         $result = array(
             '_msg' => 'Error',
-            '_function' => 'getTypes',
+            '_function' => 'getTags',
             '_id' => '0'
         );
-        $query = $this->db->get($this->_typesTable);
+        $query = $this->db->get($this->_tagsTable);
 
         if ($query->num_rows()) {
-            $result['_types']=array();
+            $result['_tags']=array();
             $data=array();
             foreach ($query->result() as $row) {
-                $data['_id']= $row->typeId;
-                $data['_name']= $row->typeName;
-                array_push($result['_types'], $data);
+                $data['_id']= $row->tagId;
+                $data['_name']= $row->tagName;
+                array_push($result['_tags'], $data);
                 $result['_msg']= 'Success';
             }
         } else {
             $result['_msg']= 'Error';
-            $result['_function']= 'getTypes';
+            $result['_function']= 'getTags';
             $result['_id' ]= '2';
         }
 
         return $result;
     }
     /**
-     * Function retrieve Type information By Id
+     * Function retrieve Tag information By Id
      *
-     * @param int $_id Type Id
+     * @param int $_id tag Id
      *
      * @return array
      */
-    public function getTypeById($_id=0)
+    public function getTagsById($_id=0)
     {
 
         $result = array(
             '_msg' => 'Error',
-            '_function' => 'getTypeById',
+            '_function' => 'getTags',
             '_id' => '0'
         );
         if ($_id==0 || $_id=='') {
             $result['_msg']= 'Error';
-            $result['_function']= 'getCategoriesById';
-            $result['_error']='Please Select Category Id';
-            $result['_id' ]= '2';
+            $result['_function']= 'getTagsById';
+            $result['_error']='Please Select Tag Id';
+            $result['_id' ]= '1';
         } else {
-
-            $criteria=array('typeId'=>$_id);
-            $query = $this->db->get_where($this->_typesTable, $criteria);
+            $criteria=array('tagId'=>$_id);
+            $query = $this->db->get_where($this->_tagsTable, $criteria);
 
             if ($query->num_rows()) {
-                $result['_types']=array();
+                $result['_tags']=array();
                 $data=array();
                 foreach ($query->result() as $row) {
-                    $data['_id']= $row->typeId;
-                    $data['_name']= $row->typeName;
-                    array_push($result['_types'], $data);
+                    $data['_id']= $row->tagId;
+                    $data['_name']= $row->tags;
+                    array_push($result['_tags'], $data);
                     $result['_msg']= 'Success';
                 }
             } else {
                 $result['_msg']= 'Error';
-                $result['_function']= 'getTypeById';
-                $result['_error']='Type not Found';
-                $result['_id' ]= '3';
+                $result['_function']= 'getTagsById';
+                $result['_error']='Tag not Found';
+                $result['_id' ]= '2';
             }
         }
         return $result;
