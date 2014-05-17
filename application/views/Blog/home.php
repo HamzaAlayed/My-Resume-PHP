@@ -70,13 +70,23 @@ echo "</pre>";
     <?php
     $_posts=$_latestPosts['_posts'];
     for ($i=0;$i<count($_posts);$i++) {
+        $_oddEv=($i%2==0)?'odd':'even';
+        $_first=($i==0)?'first':'';
         $_icon=$_posts[$i]['_type']['_types'][0]['_icon'];
+        $_typeId=$_posts[$i]['_type']['_types'][0]['_id'];
         $_date=$_posts[$i]['_lastEdit'];
         $_user=$_posts[$i]['_user']['_name'];
+        $_userId=$_posts[$i]['_user']['_id'];
         $_cat=$_posts[$i]['_category']['categories'][0]['_name'];
+        $_catId=$_posts[$i]['_category']['categories'][0]['_id'];
         $_title=$_posts[$i]['_title'];
+        $_body=$_posts[$i]['_body'];
+        $_head=$_posts[$i]['_head'];
+        $_id=$_posts[$i]['_id'];
+        $_link=str_replace(' ', '-', $_title)."/".$_id;
         ?>
-            <section class="section blog_section odd">
+            <section
+                class="section blog_section <?php echo $_oddEv." ".$_first;?>">
             <div class="section_header blog_section_header ">
                 <h2 class="section_title blog_section_title">
                     <strong>
@@ -85,17 +95,19 @@ echo "</pre>";
                     </strong>
                 </h2>
                 <div class="post-info">
-                    <a href="author.html" class="post_author">
+                    <a href="author/<?php echo($_user);?>/<?php echo($_userId);?>"
+                       class="post_author">
                         <span class="icon-user"></span>
                         <?php echo($_user);?>
                     </a>
-                    <a href="post-standart.html" class="comments_count">
+                    <a href="post/<?php echo $_link?>"
+                       class="comments_count">
                         <span class="icon-comment"></span>
                         0
                     </a>
                     <span class="post_categories">
                         <span class="icon-align-left"></span>
-                        <a href="blog-category-arhive.html"
+                        <a href="category/<?php echo $_cat;?>/<?php echo $_catId;?>"
                            class="post_categories even first">
                             <?php echo($_cat);?>
                         </a>
@@ -105,33 +117,81 @@ echo "</pre>";
             <div class="section_body blog_section_body">
                 <article class="post ">
                     <h3 class="post_title">
-                        <a href="post-standart.html">
+                        <a href="post/<?php echo $_link?>/<?php echo $_id?>">
                             <?php echo($_title);?>
                         </a>
                     </h3>
+                    <?php
+    if ($_typeId==3) {
+                        ?>
+        <audio src="<?php echo($_head);?>" controls
+               type="audio/mp3" width="100%"
+               height="60"></audio>
+                    <?php
+    }
+    if ($_typeId==6) {
+                        ?>
                     <div class="pic">
-                        <a href="post-standart.html"
+                        <a href="post/<?php echo $_link?>/<?php echo $_id?>"
                            class="w_hover img-link img-wrap">
-                            <img alt="Quisque odio eros"
-                                 src="images_post/girl.jpg" />
+                            <img alt="<?php echo($_title);?>"
+                                 src="<?php echo($_head);?>" />
                             <span class="overlay"></span>
                             <span class="link-icon"></span>
                         </a>
                     </div>
-                    <div class="text">
-                        <p>Lorem ipsum dolor sit amet,
-                            consectetur adipisicing elit,
-                            sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam,
-                            quis nostrud exercitation
-                            ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. </p>
-                        <div class="readmore">
-                            <a href="post-standart.html" class="more-link">
-                                <span class="readmore">Read more</span>
-                            </a>
+                    <?php
+    }
+                    ?>
+                    <?php
+    if ($_typeId==4) {
+        $_slider=explode('|-|', $_head);
+                        ?>
+                        <div class="slider_container">
+                            <ul class="slides">
+                                <?php
+        for ($s=0;$s<count($_slider);$s++) {
+                                ?>
+                                <li>
+                                    <a href="post/<?php echo $_link?>"
+                                       class="w_hover">
+                                        <img src="<?php echo $_slider[$s]?>"
+                                             alt="<?php echo($_title);?>" />
+                                        <span class="overlay"></span>
+                                    </a>
+                                </li>
+                                <?php
+        }
+                                ?>
+                            </ul>
                         </div>
+
+                    <?php
+    }
+                    ?>
+                    <?php
+    if ($_typeId==2) {
+        $_video=explode('|-|', $_head);
+                        ?>
+                        <div class="video_container">
+                            <div class="video_thumb"
+                                 data-frame="<?php echo $_video[0]?>">
+                                <span class="play_button"></span>
+                                <img alt="<?php echo($_title);?>"
+                                     src="<?php echo $_video[1]?>" />
+                            </div>
+                        </div>
+
+                    <?php
+    }
+                    ?>
+                    <div class="text">
+                        <?php echo($_body);?>
+                        <div class="readmore">
+                            <a href="post/<?php echo $_link?>/<?php echo $_id?>"
+                               class="more-link">
+                                <span class="readmore">Read more</span>
+                            </a></div>
                     </div>
                 </article>
             </div>
@@ -139,58 +199,8 @@ echo "</pre>";
     <?php
     }
         ?>
-        <section class="section blog_section even">
-            <div class="section_header blog_section_header gallery">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-camera"></span><span class="section_name">Jul.03</span></strong></h2>
-                <div class="post-info"> <a href="author.html" class="post_author"><span class="icon-user"></span>admin</a> <a href="post-slider.html" class="comments_count"><span class="icon-comment"></span>0</a> <span class="post_categories"><span class="icon-align-left"></span><a href="blog-category-arhive.html" class="post_categories even first last">Slider</a></span> </div>
-            </div>
-            <div class="section_body blog_section_body">
-                <article class="post ">
-                    <h3 class="post_title"><a href="post-slider.html">Proin bibendum</a></h3>
-                    <div class="slider_container">
-                        <ul class="slides">
-                            <li><a href="post-slider.html" class="w_hover"><img src="images_post/bigstock-Freedom-happy-free-couple-in-31838090.jpg" alt="" /><span class="overlay"></span></a></li>
-                            <li><a href="post-slider.html" class="w_hover"><img src="images_post/bigstock-Smiling-girl-with-shopping-bag-36516358.jpg" alt="" /><span class="overlay"></span></a></li>
-                            <li><a href="post-slider.html" class="w_hover"><img src="images_post/bigstock-Beautiful-young-woman-jumping-15095405.jpg" alt="" /><span class="overlay"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="text">
-                        <p>Pellentesque luctus urna quis tellus tempus ultrices. Aenean varius pretium nisl, scelerisque mattis nibh laoreet id. Suspendisse nec auctor dolor, ac auctor dolor. </p>
-                        <div class="readmore"><a href="post-slider.html" class="more-link"><span class="readmore">Read more</span></a></div>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section class="section blog_section odd">
-            <div class="section_header blog_section_header audio">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-music"></span><span class="section_name">Jul.02</span></strong></h2>
-                <div class="post-info"> <a href="author.html" class="post_author"><span class="icon-user"></span>admin</a> <a href="post-audio.html" class="comments_count"><span class="icon-comment"></span>0</a> <span class="post_categories"><span class="icon-align-left"></span><a href="blog-category-arhive.html" class="post_categories even first last">Audio</a></span> </div>
-            </div>
-            <div class="section_body blog_section_body">
-                <article class="post ">
-                    <h3 class="post_title"><a href="post-audio.html">In mattis risus sed</a></h3>
-                    <audio src="http://beautymind.webglogic.com/audio/AirReview-Landmarks-02-ChasingCorporate.mp3" controls type="audio/mp3" width="100%" height="60"></audio>
-                </article>
-            </div>
-        </section>
-        <section class="section blog_section even">
-            <div class="section_header blog_section_header video">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-eye-open"></span><span class="section_name">Jul.01</span></strong></h2>
-                <div class="post-info"> <a href="author.html" class="post_author"><span class="icon-user"></span>admin</a> <a href="post-video.html" class="comments_count"><span class="icon-comment"></span>0</a> <span class="post_categories"><span class="icon-align-left"></span><a href="blog-category-arhive.html" class="post_categories even first">Video</a>, <a href="http://shifthtml.themerex.net/blog-category-arhive.html/" class="post_categories odd last">Audio</a></span> </div>
-            </div>
-            <div class="section_body blog_section_body">
-                <article class="post ">
-                    <h3 class="post_title"><a href="post-video.html">Maecenas dignissim</a></h3>
-                    <div class="video_container">
-                        <div class="video_thumb" data-frame="http://youtube.com/embed/jxS8EUxmlx8?wmode=opaque"><span class="play_button"></span><img alt="Maecenas dignissim" src="images_post/bigstock-Sexy-woman-wearing-red-dress-36516409-1020x590.jpg" /></div>
-                    </div>
-                    <div class="text">
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam suscipit tempor justo sit amet fringilla. Nunc mollis justo eu ullamcorper mattis. Phasellus congue at enim nec vulputate. Nam enim sem, viverra et purus ac, tempus bibendum diam. </p>
-                        <div class="readmore"><a href="post-video.html" class="more-link"><span class="readmore">Read more</span></a></div>
-                    </div>
-                </article>
-            </div>
-        </section>
+
+
         <section class="section blog_section odd">
             <div class="section_header blog_section_header link">
                 <h2 class="section_title blog_section_title"><strong><span class="icon icon-link"></span><span class="section_name">Jun.25</span></strong></h2>
