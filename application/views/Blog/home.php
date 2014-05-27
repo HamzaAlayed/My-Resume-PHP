@@ -83,6 +83,7 @@ echo "</pre>";
         $_body=$_posts[$i]['_body'];
         $_head=$_posts[$i]['_head'];
         $_id=$_posts[$i]['_id'];
+        $_commentsCount=$_posts[$i]['_commentsCount']['_count'];
         $_link=str_replace(' ', '-', $_title)."/".$_id;
         ?>
             <section
@@ -103,7 +104,7 @@ echo "</pre>";
                     <a href="post/<?php echo $_link?>"
                        class="comments_count">
                         <span class="icon-comment"></span>
-                        0
+                        <?php echo $_commentsCount?>
                     </a>
                     <span class="post_categories">
                         <span class="icon-align-left"></span>
@@ -115,63 +116,16 @@ echo "</pre>";
                 </div>
             </div>
             <div class="section_body blog_section_body">
-                <article class="post ">
+                <article class="post <?php echo ($_typeId==5)?'format-link':''?>">
                     <h3 class="post_title">
-                        <a href="post/<?php echo $_link?>/<?php echo $_id?>">
+                        <a href="post/<?php echo $_link?>">
                             <?php echo($_title);?>
                         </a>
                     </h3>
                     <?php
-    if ($_typeId==3) {
-                        ?>
-        <audio src="<?php echo($_head);?>" controls
-               type="audio/mp3" width="100%"
-               height="60"></audio>
-                    <?php
-    }
-    if ($_typeId==6) {
-                        ?>
-                    <div class="pic">
-                        <a href="post/<?php echo $_link?>/<?php echo $_id?>"
-                           class="w_hover img-link img-wrap">
-                            <img alt="<?php echo($_title);?>"
-                                 src="<?php echo($_head);?>" />
-                            <span class="overlay"></span>
-                            <span class="link-icon"></span>
-                        </a>
-                    </div>
-                    <?php
-    }
-                    ?>
-                    <?php
-    if ($_typeId==4) {
-        $_slider=explode('|-|', $_head);
-                        ?>
-                        <div class="slider_container">
-                            <ul class="slides">
-                                <?php
-        for ($s=0;$s<count($_slider);$s++) {
-                                ?>
-                                <li>
-                                    <a href="post/<?php echo $_link?>"
-                                       class="w_hover">
-                                        <img src="<?php echo $_slider[$s]?>"
-                                             alt="<?php echo($_title);?>" />
-                                        <span class="overlay"></span>
-                                    </a>
-                                </li>
-                                <?php
-        }
-                                ?>
-                            </ul>
-                        </div>
 
-                    <?php
-    }
-                    ?>
-                    <?php
     if ($_typeId==2) {
-        $_video=explode('|-|', $_head);
+                        $_video=explode('|-|', $_head);
                         ?>
                         <div class="video_container">
                             <div class="video_thumb"
@@ -184,11 +138,66 @@ echo "</pre>";
 
                     <?php
     }
+    if ($_typeId==3) {
+                        ?>
+        <audio src="<?php echo($_head);?>" controls
+               type="audio/mp3" width="100%"
+               height="60"></audio>
+                    <?php
+    }
+    if ($_typeId==4) {
+                        $_slider=explode('|-|', $_head);
+                        ?>
+                        <div class="slider_container">
+                            <ul class="slides">
+                            <?php
+                                for ($s=0;$s<count($_slider);$s++) {
+                                    ?>
+                                    <li>
+                                        <a href="post/<?php echo $_link?>"
+                                           class="w_hover">
+                                            <img src="<?php echo $_slider[$s]?>"
+                                                 alt="<?php echo($_title);?>" />
+                                            <span class="overlay"></span>
+                                        </a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+
+                    <?php
+    }
+    if ($_typeId==5) {
+                        $_slider=explode('|-|', $_head);
+                        ?>
+        <a href="<?php echo $_head;?>" class="post_link">
+            <span class="link_url"><?php echo $_head;?></span> </a>
+
+
+                    <?php
+                    }
+    if ($_typeId==6) {
+                        ?>
+                    <div class="pic">
+                        <a href="post/<?php echo $_link?>"
+                           class="w_hover img-link img-wrap">
+                            <img alt="<?php echo($_title);?>"
+                                 src="<?php echo($_head);?>" />
+                            <span class="overlay"></span>
+                            <span class="link-icon"></span>
+                        </a>
+                    </div>
+                    <?php
+    }
+
+
                     ?>
                     <div class="text">
                         <?php echo($_body);?>
                         <div class="readmore">
-                            <a href="post/<?php echo $_link?>/<?php echo $_id?>"
+                            <a href="post/<?php echo $_link?>"
                                class="more-link">
                                 <span class="readmore">Read more</span>
                             </a></div>
@@ -200,32 +209,6 @@ echo "</pre>";
     }
         ?>
 
-
-        <section class="section blog_section odd">
-            <div class="section_header blog_section_header link">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-link"></span><span class="section_name">Jun.25</span></strong></h2>
-                <div class="post-info"> <a href="author.html" class="post_author"><span class="icon-user"></span>admin</a> <a href="post-link.html" class="comments_count"><span class="icon-comment"></span>0</a> <span class="post_categories"><span class="icon-align-left"></span><a href="blog-category-arhive.html" class="post_categories even first last">Links</a></span> </div>
-            </div>
-            <div class="section_body blog_section_body">
-                <article class="post format-link">
-                    <h3 class="post_title"><a href="post-link.html">Maecenas dignissim</a></h3>
-                    <a href="http://themeforest.net/user/themerex" class="post_link"> <span class="link_url">http://themeforest.net/user/themerex</span> </a> </article>
-            </div>
-        </section>
-        <section class="section blog_section odd last">
-            <div class="section_header blog_section_header ">
-                <h2 class="section_title blog_section_title"><strong><span class="icon icon-pencil"></span><span class="section_name">May.29</span></strong></h2>
-                <div class="post-info"> <a class="post_author" href="author.html"><span class="icon-user"></span>admin</a> <a class="comments_count" href="post-text.html"><span class="icon-comment"></span>1</a> <span class="post_categories"><span class="icon-align-left"></span><a class="post_categories even first last" href="blog-category-arhive.html">Text</a></span> </div>
-            </div>
-            <div class="section_body blog_section_body">
-                <article class="post">
-                    <h3 class="post_title"><a href="post-text.html">Hello world!</a></h3>
-                    <div class="text">
-                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam suscipit tempor justo sit amet fringilla. Nunc mollis justo eu ullamcorper mattis. Phasellus congue at enim nec vulputate.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
         <div id="nav_pages" class="nav_pages">
             <div class="prev_first"></div>
             <a href="blog-category-arhive.html" class="next">Next</a>
@@ -301,27 +284,37 @@ echo "</pre>";
     <aside class="widget widget_themerex_recent_posts">
         <h3 class="widget_title">Recent Posts</h3>
         <ul>
-            <li class="article">
-                <h4 class="title"><a href="post-link.html">Quisque odio eros</a></h4>
-                <ol class="icons">
-                    <li class="post_date"><span class="icon-time"></span>Jul.04</li>
-                    <li class="post_author"><span class="icon-user"></span>admin</li>
-                </ol>
-            </li>
-            <li class="article">
-                <h4 class="title"><a href="post-slider.html">Proin bibendum</a></h4>
-                <ol class="icons">
-                    <li class="post_date"><span class="icon-time"></span>Jul.03</li>
-                    <li class="post_author"><span class="icon-user"></span>admin</li>
-                </ol>
-            </li>
-            <li class="article">
-                <h4 class="title"><a href="post-standart.html">In mattis risus sed</a></h4>
-                <ol class="icons">
-                    <li class="post_date"><span class="icon-time"></span>Jul.02</li>
-                    <li class="post_author"><span class="icon-user"></span>admin</li>
-                </ol>
-            </li>
+            <?php
+            $_posts=$_latestPosts['_posts'];
+            for ($i=0;$i<count($_posts);$i++) {
+    if ($i<3) {
+                    $_user=$_posts[$i]['_user']['_name'];
+                    $_date=$_posts[$i]['_lastEdit'];
+                    $_title=$_posts[$i]['_title'];
+                    $_id=$_posts[$i]['_id'];
+                    $_link=str_replace(' ', '-', $_title)."/".$_id;
+                    ?>
+                    <li class="article">
+                        <h4 class="title">
+                            <a href="<?php echo $_link;?>">
+                                <?php echo $_title;?>
+                            </a>
+                        </h4>
+                        <ol class="icons">
+                            <li class="post_date">
+                                <span class="icon-time"></span>
+                                <?php echo $_date;?>
+                            </li>
+                            <li class="post_author">
+                                <span class="icon-user"></span>
+                                <?php echo $_user;?>
+                            </li>
+                        </ol>
+                    </li>
+                <?php
+    }
+            }
+            ?>
         </ul>
     </aside>
     <!-- /Recent Posts -->
@@ -329,7 +322,17 @@ echo "</pre>";
     <!-- tags -->
     <aside class="widget widget_tag_cloud">
         <h3 class="widget_title">Tags</h3>
-        <div class="tagcloud"> <a href="blog-category-arhive.html">Design</a> <a href="blog-category-arhive.html">Image</a> <a href="blog-category-arhive.html">Slider</a> <a href="blog-category-arhive.html">Video</a> <a href="blog-category-arhive.html">Audio</a> </div>
+        <div class="tagcloud">
+            <?php
+            for ($i=0;$i<count($_tags['_tags']);$i++) {
+                ?>
+                <a href="blog/tag/<?php echo($_tags['_tags'][$i]);?>">
+                    <?php echo($_tags['_tags'][$i]);?>
+                </a>
+            <?php
+            }
+            ?>
+        </div>
     </aside>
     <!-- /tags -->
 
@@ -353,7 +356,11 @@ echo "</pre>";
                 </thead>
                 <tfoot>
                 <tr>
-                    <td colspan="3" id="prev"><a href="#" title="View posts for July 2013">&laquo; Jul</a></td>
+                    <td colspan="3" id="prev">
+                        <a href="#" title="View posts for July 2013">
+                            &laquo; Jul
+                        </a>
+                    </td>
                     <td class="pad">&nbsp;</td>
                     <td colspan="3" id="next" class="pad">&nbsp;</td>
                 </tr>

@@ -33,6 +33,8 @@
  *
  * @property Types $Types
  *
+ * @property Comments $Comments
+ *
  * @property Profile $Profile
  *
  * @author   Hamza Alayed <me@hamzaalayed.com>
@@ -57,7 +59,9 @@ class Posts extends CI_Model
         $this->load->model('blog/Categories');
         $this->load->model('blog/Tags');
         $this->load->model('blog/Types');
+        $this->load->model('blog/Comments');
         $this->load->model('profile');
+
     }
 
     /**
@@ -73,14 +77,16 @@ class Posts extends CI_Model
      *
      * @return array
      */
-    private function _getPosts($_criteria=array(),$_limit=10,$_offset=0,$_fastView=false)
-    {
+    private function _getPosts(
+        $_criteria=array(),$_limit=10,$_offset=0,$_fastView=false
+    ) {
 
         $result = array(
             '_msg' => 'Error',
             '_function' => 'getPosts',
             '_id' => '0'
         );
+        $this->db->order_by("postDate", "desc");
         if (count($_criteria)==0) {
             $query = $this->db->get($this->_postsTable, $_limit, $_offset);
         } else {
@@ -90,6 +96,7 @@ class Posts extends CI_Model
                 $_offset
             );
         }
+
         if ($query->num_rows()) {
             $result['_posts']=array();
             $data=array();
@@ -116,6 +123,8 @@ class Posts extends CI_Model
                     _dateFormat($row->postLastEdit);
                 $data['_category']=$this->
                     Categories->getCategoriesById($row->postCategory);
+                $data['_comments']=$this->Comments->getComments(array('postId'=>$row->postId));
+                $data['_commentsCount']=$this->Comments->getCommentCount(array('postId'=>$row->postId));
                 array_push($result['_posts'], $data);
                 $result['_msg']= 'Success';
             }

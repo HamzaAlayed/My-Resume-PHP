@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" promptOnRemoteOverwrite="CHECK_CONTENT" serverName="Hamza" notifyRemoteChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" promptOnRemoteOverwrite="CHECK_CONTENT" serverName="IPage" notifyRemoteChanges="true">
     <serverData>
-      <paths name="Hamza">
+      <paths name="IPage">
         <serverdata>
           <mappings>
-            <mapping deploy="/hamzaalayed/v2/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/hamzaalayed/v2" local="$PROJECT_DIR$" web="/v2" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/hamzaalayed/v2/application/config/database.php" />
+            <excludedPath path="/hamzaalayed/v2/.htaccess" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

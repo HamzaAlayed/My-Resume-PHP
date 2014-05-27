@@ -38,6 +38,8 @@
  *
  * @property Posts $Posts
  *
+ * @property Tags $Tags
+ *
  * @license  http://www.hamzaalayed.com Policy
  *
  * @link     http://www.hamzaalayed.com
@@ -56,6 +58,7 @@ class Blog extends CI_Controller
         $this->load->model('blog/Categories');
         $this->load->model('blog/Types');
         $this->load->model('blog/Posts');
+
     }
 
     /**
@@ -71,12 +74,14 @@ class Blog extends CI_Controller
         $_latestPosts=$this->Posts->getLatestPosts(0, 0, 10, 0, true);
         $_categories=$this->Categories->getCategories();
         $_types=$this->Types->getTypes();
+        $_tags=$this->Tags->getTagsArray();
         $_data=array(
             "_selectPage"=>"Blog/home",
             "_user"=>$_user,
             "_categories"=> $_categories,
             "_types"=> $_types,
-            "_latestPosts"=>$_latestPosts
+            "_latestPosts"=>$_latestPosts,
+            "_tags"=>$_tags
 
         );
         $this->load->view('HTMLLoader', $_data);
