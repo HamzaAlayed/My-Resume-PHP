@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2014-05-27 04:43:24
+Date: 2014-05-27 06:18:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,14 +38,14 @@ INSERT INTO `blog_category` VALUES ('2', 'PHP', '0');
 DROP TABLE IF EXISTS `blog_comments`;
 CREATE TABLE `blog_comments` (
   `commentId` int(9) NOT NULL AUTO_INCREMENT COMMENT 'Comment ID',
-  `commentName` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'Commenter Name',
-  `commentEmail` varchar(100) CHARACTER SET utf8 NOT NULL COMMENT 'Commenter Email',
-  `commentBody` text CHARACTER SET utf8 NOT NULL COMMENT 'Comment Text',
+  `commentName` varchar(100) NOT NULL COMMENT 'Commenter Name',
+  `commentEmail` varchar(100) NOT NULL COMMENT 'Commenter Email',
+  `commentBody` text NOT NULL COMMENT 'Comment Text',
   `commentReply` int(9) DEFAULT NULL COMMENT 'Comment Reply ID',
   `postId` int(9) NOT NULL COMMENT 'Post ID',
   `commentDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Comment Date',
   PRIMARY KEY (`commentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Posts Comments';
 
 -- ----------------------------
 -- Records of blog_comments
@@ -108,7 +108,7 @@ CREATE TABLE `blog_types` (
   `typeName` varchar(50) NOT NULL COMMENT 'Type Name',
   `typeIcon` varchar(100) NOT NULL COMMENT 'Type Icon',
   PRIMARY KEY (`typeId`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Posts Types';
 
 -- ----------------------------
 -- Records of blog_types
